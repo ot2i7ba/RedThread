@@ -3,12 +3,14 @@
 ## Benutzername
 ### WhatsMyName
 https://whatsmyname.app/
+id: 00010
 entity: username, alias
 hint: Prüft, auf welchen Plattformen dieser Benutzername existiert.
 order: 10
 
 ### Namechk
 https://namechk.com/
+id: 00020
 entity: username, alias
 hint: Schnelle Verfügbarkeits-/Existenzprüfung über viele Dienste.
 order: 20
@@ -16,6 +18,7 @@ order: 20
 ## E-Mail-Adresse
 ### Have I Been Pwned
 https://haveibeenpwned.com/
+id: 00100
 entity: email
 hint: Taucht die Adresse in bekannten Daten-Leaks auf?
 order: 10
@@ -35,12 +38,14 @@ hint: Rückwärtssuche zu einer (deutschen) Rufnummer.
 ## Domain / Website
 ### WHOIS (who.is)
 https://who.is/whois/{value}
+id: 00300
 entity: domain
 hint: Registrierungs-/Inhaberdaten der Domain (Wert wird eingesetzt).
 order: 10
 
 ### crt.sh (Zertifikate)
 https://crt.sh/?q={value}
+id: 00310
 entity: domain
 hint: Ausgestellte TLS-Zertifikate → Subdomains/Historie.
 order: 20
@@ -60,6 +65,7 @@ hint: Beispiel-Eintrag mit Wert-Vorbelegung — durch echtes Tool ersetzen.
 ## Allgemein
 ### Allgemeine Suchmaschine
 https://www.google.com/search?q={value}
+id: 00900
 entity: *
 hint: Generischer Einstieg für jeden Entitätstyp (Wert wird eingesetzt).
 order: 90
