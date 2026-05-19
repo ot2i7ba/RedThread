@@ -1,0 +1,67 @@
+# RedThread OSINT Tools
+
+## Benutzername
+### WhatsMyName
+https://whatsmyname.app/
+entity: username, alias
+hint: Prüft, auf welchen Plattformen dieser Benutzername existiert.
+order: 10
+
+### Namechk
+https://namechk.com/
+entity: username, alias
+hint: Schnelle Verfügbarkeits-/Existenzprüfung über viele Dienste.
+order: 20
+
+## E-Mail-Adresse
+### Have I Been Pwned
+https://haveibeenpwned.com/
+entity: email
+hint: Taucht die Adresse in bekannten Daten-Leaks auf?
+order: 10
+
+### EmailRep
+https://emailrep.io/
+entity: email
+hint: Reputations-/Kontextinfos zu einer E-Mail-Adresse.
+order: 20
+
+## Rufnummer
+### Wer-ruft-an / Rückwärtssuche
+https://www.dasoertliche.de/rueckwaertssuche/
+entity: phone
+hint: Rückwärtssuche zu einer (deutschen) Rufnummer.
+
+## Domain / Website
+### WHOIS (who.is)
+https://who.is/whois/{value}
+entity: domain
+hint: Registrierungs-/Inhaberdaten der Domain (Wert wird eingesetzt).
+order: 10
+
+### crt.sh (Zertifikate)
+https://crt.sh/?q={value}
+entity: domain
+hint: Ausgestellte TLS-Zertifikate → Subdomains/Historie.
+order: 20
+
+## Server / IP-Adresse
+### Shodan
+https://www.shodan.io/
+entity: server
+hint: Offene Dienste/Ports/Banner zu einer IP (manuell eingeben).
+
+## Soziale Netzwerke
+### Allround-Personensuche
+https://example.org/suche?q={value}
+entity: social, username, alias
+hint: Beispiel-Eintrag mit Wert-Vorbelegung — durch echtes Tool ersetzen.
+
+## Allgemein
+### Allgemeine Suchmaschine
+https://www.google.com/search?q={value}
+entity: *
+hint: Generischer Einstieg für jeden Entitätstyp (Wert wird eingesetzt).
+order: 90
+
+[EOF]
