@@ -377,7 +377,7 @@ price: premium
 ### Doxbin
 https://doxbin.com/
 id: 00850
-entity: username, email, alias, person
+entity: doxing, username, email, alias, person
 hint: Doxing-Plattform — VORSICHT: Daten sind oft falsch, manipuliert oder illegal beschafft. Nur zur Belegung/Quellenkritik nutzen, niemals als Faktum übernehmen.
 order: 10
 type: warning
