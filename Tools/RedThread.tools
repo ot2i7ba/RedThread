@@ -1,5 +1,21 @@
 # RedThread OSINT Tools
 
+#   Prüfketten-Schema
+#
+#   id:      Stabiler, von Bezeichnung/URL/Position UNABHÄNGIGER Identifikator.
+#   entity:  Entitätstyp-IDs (username, email, phone, domain, server,
+#            messenger, social, alias, location …); * = alle.
+#            Komma/Semikolon-getrennt.
+#   hint:    Kurzanleitung (erscheint in der abhakbaren Checkliste).
+#   order:   kleinere Zahl = weiter oben in der Checkliste.
+#   type:    Online | Tool | Collection | Warning  (farbige Pille:
+#            grün / orange / indigo / roter Rand).
+#   price:   Free | Freemium | Premium  (farbige Pille: grün / orange / rot;
+#            zusätzlich „$"/„$$"-Marker am Label). Ungültig → verworfen.
+#   {value}  optional im URL → wird beim Öffnen durch den Knotenwert ersetzt.
+
+
+
 ## Benutzername
 ### WhatsMyName
 https://whatsmyname.app/
@@ -7,6 +23,8 @@ id: 00010
 entity: username, alias
 hint: Prüft, auf welchen Plattformen dieser Benutzername existiert.
 order: 10
+type: online
+price: free
 
 ### Namechk
 https://namechk.com/
@@ -14,6 +32,10 @@ id: 00020
 entity: username, alias
 hint: Schnelle Verfügbarkeits-/Existenzprüfung über viele Dienste.
 order: 20
+type: online
+price: free
+
+
 
 ## E-Mail-Adresse
 ### Have I Been Pwned
@@ -22,18 +44,57 @@ id: 00100
 entity: email
 hint: Taucht die Adresse in bekannten Daten-Leaks auf?
 order: 10
+type: online
+price: freemium
 
 ### EmailRep
 https://emailrep.io/
+id: 00110
 entity: email
 hint: Reputations-/Kontextinfos zu einer E-Mail-Adresse.
 order: 20
+type: online
+price: freemium
+
+### Epieos
+https://epieos.com/
+id: 00120
+entity: email, phone
+hint: E-Mail-/Telefon-OSINT (Google/Skype/Spotify-Verknüpfungen).
+order: 30
+type: online
+price: freemium
+
+### OathNet
+https://oathnet.org/
+id: 00130
+entity: email, username
+hint: Recon-Plattform (E-Mail/Username-Abfragen).
+order: 40
+type: online
+price: freemium
+
+### OSINT Rocks
+https://osint.rocks/
+id: 00140
+entity: email, username
+hint: All-in-One-OSINT-Dashboard für E-Mail/Username.
+order: 50
+type: online
+price: free
+
+
 
 ## Rufnummer
 ### Wer-ruft-an / Rückwärtssuche
 https://www.dasoertliche.de/rueckwaertssuche/
+id: 00200
 entity: phone
 hint: Rückwärtssuche zu einer (deutschen) Rufnummer.
+type: online
+price: free
+
+
 
 ## Domain / Website
 ### WHOIS (who.is)
@@ -42,6 +103,8 @@ id: 00300
 entity: domain
 hint: Registrierungs-/Inhaberdaten der Domain (Wert wird eingesetzt).
 order: 10
+type: online
+price: free
 
 ### crt.sh (Zertifikate)
 https://crt.sh/?q={value}
@@ -49,18 +112,455 @@ id: 00310
 entity: domain
 hint: Ausgestellte TLS-Zertifikate → Subdomains/Historie.
 order: 20
+type: online
+price: free
+
+### CentralOps
+https://centralops.net/co/
+id: 00320
+entity: domain, server
+hint: Domain-/IP-Toolbox (whois, DNS, traceroute, …).
+order: 30
+type: online
+price: free
+
+### URL Scan
+https://urlscan.io/
+id: 00330
+entity: domain
+hint: URL-Sandbox mit Screenshot, Requests und Indikatoren.
+order: 40
+type: online
+price: freemium
+
+### DNS Dumpster
+https://dnsdumpster.com/
+id: 00340
+entity: domain
+hint: Passive DNS / Subdomain-Map einer Domain.
+order: 50
+type: online
+price: free
+
+### MXToolbox
+https://mxtoolbox.com/
+id: 00350
+entity: domain
+hint: Mail-/DNS-Diagnose (MX, SPF, DMARC, Blacklists).
+order: 60
+type: online
+price: freemium
+
+### Robotex
+https://robtex.com/
+id: 00360
+entity: domain, server
+hint: Beziehungen zwischen Domains, IPs und ASNs.
+order: 70
+type: online
+price: free
+
+### You Get Signal
+https://www.yougetsignal.com/
+id: 00370
+entity: domain, server
+hint: Reverse-DNS — alle Domains hinter einer IP.
+order: 80
+type: online
+price: free
+
+
 
 ## Server / IP-Adresse
 ### Shodan
 https://www.shodan.io/
+id: 00400
 entity: server
 hint: Offene Dienste/Ports/Banner zu einer IP (manuell eingeben).
+order: 10
+type: online
+price: freemium
+
+### Criminal IP
+https://search.criminalip.io/
+id: 00410
+entity: server
+hint: Threat-Intelligence + IP-Reputation.
+order: 20
+type: online
+price: freemium
+
+### IP Location
+https://www.iplocation.net/
+id: 00420
+entity: server
+hint: IP→Geo-Lookup über mehrere Anbieter.
+order: 30
+type: online
+price: free
+
+### IPInfo.io
+https://ipinfo.io/
+id: 00430
+entity: server
+hint: IP→ASN/Geo/Provider, gute API-Qualität.
+order: 40
+type: online
+price: freemium
+
+### Super IP
+https://suip.biz/
+id: 00440
+entity: server
+hint: IP-Lookup-Sammelseite (mehrere Quellen).
+order: 50
+type: online
+price: free
+
+
 
 ## Soziale Netzwerke
 ### Allround-Personensuche
 https://example.org/suche?q={value}
+id: 00500
 entity: social, username, alias
 hint: Beispiel-Eintrag mit Wert-Vorbelegung — durch echtes Tool ersetzen.
+type: online
+price: free
+
+
+
+## Telegram
+### Telegago (Google CSE)
+https://cse.google.com/cse?&cx=006368593537057042503:efxu7xprihg
+id: 00800
+entity: messenger, username, alias
+hint: Google-Custom-Search-Engine für öffentliche Telegram-Channels.
+type: online
+price: free
+
+
+
+## Karten
+### OpenStreetMap
+https://www.openstreetmap.org/search?query={value}
+id: 00600
+entity: location
+hint: Offene Karte; Adresse oder Koordinaten werden eingesetzt.
+order: 10
+type: online
+price: free
+
+### Google Maps
+https://www.google.com/maps/search/{value}
+id: 00610
+entity: location
+hint: Karte/Satellit/Street View; Suchstring wird eingesetzt.
+order: 20
+type: online
+price: free
+
+### Bing Maps
+https://www.bing.com/maps?q={value}
+id: 00620
+entity: location
+hint: Alternative Karte (oft andere Schrägluftaufnahmen).
+order: 30
+type: online
+price: free
+
+### Wikimapia
+https://wikimapia.org/
+id: 00630
+entity: location
+hint: Crowd-getaggte Orte (Hintergrund/Beschriftungen, manuell eingeben).
+order: 40
+type: online
+price: free
+
+### GeoHack (Koordinaten-Hub)
+https://geohack.toolforge.org/
+id: 00640
+entity: location
+hint: Sammelseite mit vielen Karten-/Geo-Diensten pro Koordinate.
+order: 50
+type: collection
+price: free
+
+
+
+## Daten-Leaks
+### IntelligenceX
+https://intelx.io/
+id: 00700
+entity: email, username, domain
+hint: Suchmaschine über Leaks, Pastes, Darknet (manuell eingeben).
+order: 10
+type: online
+price: freemium
+
+### DeHashed
+https://www.dehashed.com/
+id: 00710
+entity: email, username
+hint: Leak-Datenbank (Suche kostenpflichtig).
+order: 20
+type: online
+price: premium
+
+### LeakCheck
+https://leakcheck.io/
+id: 00720
+entity: email, username
+hint: Schnelle Leak-Trefferprüfung.
+order: 30
+type: online
+price: freemium
+
+### Identity Leak Checker (Uni Bonn)
+https://leakchecker.uni-bonn.de/
+id: 00730
+entity: email
+hint: Kostenlose deutsche Leak-Prüfung (Universität Bonn).
+order: 40
+type: online
+price: free
+
+### Breach Directory
+https://breachdirectory.org/
+id: 00740
+entity: email, username
+hint: Indizierte Übersicht öffentlich gewordener Breaches.
+order: 50
+type: online
+price: free
+
+### IntelRecord
+https://intelrecord.com/
+id: 00750
+entity: email, username
+hint: Leak-Datenbank-Suche.
+order: 60
+type: online
+price: freemium
+
+### OSINT Leak
+https://osintleak.com/
+id: 00760
+entity: email, username
+hint: Leak-Lookup-Dienst.
+order: 70
+type: online
+price: freemium
+
+### LeakRadar
+https://leakradar.io/de
+id: 00770
+entity: email
+hint: Leak-Monitoring (DE-Oberfläche).
+order: 80
+type: online
+price: freemium
+
+### Snusbase
+https://www.snusbase.com/
+id: 00780
+entity: email, username
+hint: Kommerzielle Leak-Datenbank.
+order: 90
+type: online
+price: premium
+
+
+
+## Doxing
+### Doxbin
+https://doxbin.com/
+id: 00850
+entity: username, email, alias, person
+hint: Doxing-Plattform — VORSICHT: Daten sind oft falsch, manipuliert oder illegal beschafft. Nur zur Belegung/Quellenkritik nutzen, niemals als Faktum übernehmen.
+order: 10
+type: warning
+price: free
+
+
+
+## Sammlungen
+### OSINT Framework
+https://osintframework.com/
+id: 01000
+entity: *
+hint: Kuratiertes, gut sortiertes OSINT-Tool-Verzeichnis.
+order: 10
+type: collection
+price: free
+
+### The Ultimate OSINT Collection
+https://start.me/p/DPYPMz/the-ultimate-osint-collection
+id: 01010
+entity: *
+hint: Umfangreiches start.me-Board (alle OSINT-Bereiche).
+order: 20
+type: collection
+price: free
+
+### Domain OSINT
+https://start.me/p/aL7OgX/site-domain-osint
+id: 01020
+entity: domain
+hint: start.me-Board speziell für Domain-Recherche.
+order: 30
+type: collection
+price: free
+
+### OSINT.sh
+https://osint.sh/
+id: 01030
+entity: *
+hint: Aggregator-Webdienst mit vielen Mini-Tools.
+order: 40
+type: collection
+price: free
+
+
+
+## GitHub-Tools
+### Spiderfoot
+https://github.com/smicallef/spiderfoot
+id: 01100
+entity: *
+hint: Open-Source-Recon-Framework mit vielen Modulen.
+order: 10
+type: tool
+price: free
+
+### Socid Extractor
+https://github.com/soxoj/socid-extractor
+id: 01110
+entity: social, username
+hint: Extrahiert Profilfelder aus sozialen Netzwerken.
+order: 20
+type: tool
+price: free
+
+### Recon-NG
+https://github.com/lanmaster53/recon-ng
+id: 01120
+entity: *
+hint: Modulares Recon-Framework (CLI).
+order: 30
+type: tool
+price: free
+
+### Mailcat
+https://github.com/sharsil/mailcat
+id: 01130
+entity: email
+hint: E-Mail-Existenzprüfung über mehrere Anbieter.
+order: 40
+type: tool
+price: free
+
+### GHunt
+https://github.com/mxrch/ghunt
+id: 01140
+entity: email
+hint: Aufklärung zu Google-Konten anhand einer Adresse.
+order: 50
+type: tool
+price: free
+
+### Holehe
+https://github.com/megadose/holehe
+id: 01150
+entity: email
+hint: Findet Dienste, bei denen die E-Mail registriert ist.
+order: 60
+type: tool
+price: free
+
+### theHarvester
+https://github.com/laramies/theHarvester
+id: 01160
+entity: email, domain
+hint: Sammelt E-Mails, Subdomains und Hosts aus offenen Quellen.
+order: 70
+type: tool
+price: free
+
+### Sherlock
+https://github.com/sherlock-project/sherlock
+id: 01170
+entity: username, alias
+hint: Sucht einen Username auf vielen Plattformen.
+order: 80
+type: tool
+price: free
+
+### Maigret
+https://github.com/soxoj/maigret
+id: 01180
+entity: username, alias
+hint: Aggregierter Username-Recon mit Profil-Extraktion.
+order: 90
+type: tool
+price: free
+
+### Enola Holmes
+https://github.com/TheYahya/enola
+id: 01190
+entity: username, alias
+hint: Username-Recon-Tool (Sherlock-Alternative).
+order: 100
+type: tool
+price: free
+
+### Aliens Eye
+https://github.com/arxhr007/Aliens_eye
+id: 01200
+entity: username, email
+hint: OSINT-Aggregator (Username/E-Mail).
+order: 110
+type: tool
+price: free
+
+### Naminter
+https://github.com/3xp0rt/Naminter
+id: 01210
+entity: username, alias
+hint: Username-Verfügbarkeits-Check.
+order: 120
+type: tool
+price: free
+
+### DetectDee
+https://github.com/Yvesssn/DetectDee
+id: 01220
+entity: username
+hint: Username/Profil-Detector.
+order: 130
+type: tool
+price: free
+
+### Social-Analyzer
+https://github.com/qeeqbox/social-analyzer
+id: 01230
+entity: social, username
+hint: Analyse sozialer Profile mit Heuristiken.
+order: 140
+type: tool
+price: free
+
+### Argus
+https://github.com/jasonxtn/Argus
+id: 01240
+entity: *
+hint: All-in-One-Recon-Tool.
+order: 150
+type: tool
+price: free
+
+
 
 ## Allgemein
 ### Allgemeine Suchmaschine
@@ -69,5 +569,7 @@ id: 00900
 entity: *
 hint: Generischer Einstieg für jeden Entitätstyp (Wert wird eingesetzt).
 order: 90
+type: online
+price: free
 
 [EOF]
