@@ -680,7 +680,7 @@ type: online
 price: free
 
 ### Peekviewer
-https://peekviewer.com
+https://peekviewer.com/profile/
 id: 02070
 entity: social, username, alias
 hint: Anonymer Instagram-Profil-/Story-Viewer.
