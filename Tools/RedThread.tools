@@ -1,7 +1,51 @@
+# =============================================================================
 # RedThread OSINT Tools
-
-#   Prüfketten-Schema
+# =============================================================================
 #
+# Diese Datei ist Bestandteil der RedThread-Anwendung und stellt eine
+# kuratierte Sammlung externer OSINT-Werkzeuge bereit (Recherche-Hilfe für
+# die abhakbaren Prüfketten je Knoten).
+#
+# Anwendung:    RedThread — Forensische OSINT-Erkenntnisketten
+# Copyright:    © 2026 ot2i7ba (Otti). Alle Rechte vorbehalten.
+# Homepage:     https://redthread.rocks
+# Quellcode:    https://github.com/ot2i7ba
+#
+# -----------------------------------------------------------------------------
+# Datenschutz
+# -----------------------------------------------------------------------------
+# Beim Aufruf eines hier gelisteten Dienstes werden Daten (insbesondere der
+# eingegebene Suchbegriff, die IP-Adresse des Aufrufenden, Browser-Kennungen
+# und ggf. weitere Verbindungsmerkmale) an den jeweiligen Drittanbieter
+# übertragen und dort verarbeitet. Für die Erhebung, Verarbeitung, Speicherung
+# und Weitergabe dieser Daten gelten ausschließlich die Datenschutzhinweise,
+# Allgemeinen Geschäftsbedingungen und sonstigen Nutzungsbedingungen des
+# jeweiligen Anbieters. Diese sind vor jeder Nutzung eigenverantwortlich zur
+# Kenntnis zu nehmen. Insbesondere ist im Einzelfall zu prüfen, ob die
+# Übermittlung im konkreten Ermittlungs- bzw. Recherchekontext zulässig,
+# verhältnismäßig und mit den anwendbaren Vorgaben der Datenschutz-Grundver-
+# ordnung (DSGVO), nationaler Datenschutzgesetze sowie dienst- bzw. behörden-
+# interner Vorgaben (z. B. OPSEC) vereinbar ist.
+#
+# -----------------------------------------------------------------------------
+# Haftungsausschluss
+# -----------------------------------------------------------------------------
+# Die Aufnahme eines Dienstes in diese Liste stellt weder eine Empfehlung
+# noch eine Aussage über dessen inhaltliche Qualität, Verfügbarkeit, recht-
+# liche Zulässigkeit, Aktualität oder Eignung für einen bestimmten Zweck dar.
+# Der Entwickler der RedThread-Anwendung ist nicht Anbieter der hier verlink-
+# ten Drittdienste, hat keinen Einfluss auf deren Gestaltung, Funktion, In-
+# halte oder Datenverarbeitung und übernimmt keinerlei Haftung — gleich aus
+# welchem Rechtsgrund — für Schäden, Datenschutzverstöße, Verfügbarkeits-
+# ausfälle, fehlerhafte oder veraltete Ergebnisse oder sonstige nachteilige
+# Folgen, die aus der Nutzung der gelisteten Dienste oder dem Vertrauen auf
+# deren Ausgaben entstehen. Die Verantwortung für die rechtmäßige, ermitt-
+# lungstaktisch und ethisch angemessene Verwendung der hier gelisteten
+# Dienste liegt vollständig beim Nutzer.
+#
+# -----------------------------------------------------------------------------
+# Prüfketten-Schema
+# -----------------------------------------------------------------------------
 #   id:      Stabiler, von Bezeichnung/URL/Position UNABHÄNGIGER Identifikator.
 #   entity:  Entitätstyp-IDs (username, email, phone, domain, server,
 #            messenger, social, alias, location …); * = alle.
@@ -32,6 +76,15 @@ id: 00020
 entity: username, alias
 hint: Schnelle Verfügbarkeits-/Existenzprüfung über viele Dienste.
 order: 20
+type: online
+price: free
+
+### InstantUsername
+https://instantusername.com
+id: 00030
+entity: username, alias
+hint: Parallele Verfügbarkeitsprüfung des Benutzernamens auf gängigen Plattformen.
+order: 30
 type: online
 price: free
 
@@ -228,6 +281,15 @@ hint: Beispiel-Eintrag mit Wert-Vorbelegung — durch echtes Tool ersetzen.
 type: online
 price: free
 
+### Social Searcher
+https://social-searcher.com
+id: 00510
+entity: social, username, alias
+hint: Plattformübergreifende Suche nach Posts und Profilen anhand von Stichwort/Username.
+order: 20
+type: online
+price: freemium
+
 
 
 ## Telegram
@@ -377,7 +439,7 @@ price: premium
 ### Doxbin
 https://doxbin.com/
 id: 00850
-entity: doxing, username, email, alias, person
+entity: username, email, alias, person
 hint: Doxing-Plattform — VORSICHT: Daten sind oft falsch, manipuliert oder illegal beschafft. Nur zur Belegung/Quellenkritik nutzen, niemals als Faktum übernehmen.
 order: 10
 type: warning
@@ -559,6 +621,303 @@ hint: All-in-One-Recon-Tool.
 order: 150
 type: tool
 price: free
+
+
+
+## Instagram
+### Imginn
+https://imginn.com
+id: 02010
+entity: social, username, alias
+hint: Anonyme Anzeige öffentlicher Instagram-Profile, Beiträge und Storys ohne Login.
+order: 10
+type: online
+price: free
+
+### GreatFon
+https://greatfon.com
+id: 02020
+entity: social, username, alias
+hint: Profile, Beiträge und Story-Highlights von Instagram extern abrufbar.
+order: 20
+type: online
+price: free
+
+### AnonyIG
+https://anonyig.com
+id: 02030
+entity: social, username, alias
+hint: Anonymer Instagram-Story- und Profil-Viewer.
+order: 30
+type: online
+price: free
+
+### Dolphin Radar
+https://dolphinradar.com
+id: 02040
+entity: social, username, alias
+hint: Aktivitätsanalyse zu Instagram-Profilen (Follows, Likes, Posting-Muster).
+order: 40
+type: online
+price: freemium
+
+### Inflact Profile Viewer
+https://inflact.com/instagram-viewer
+id: 02050
+entity: social, username, alias
+hint: Profil-, Story- und Highlight-Vorschau ohne Instagram-Login.
+order: 50
+type: online
+price: freemium
+
+### GramSnap
+https://gramsnap.com
+id: 02060
+entity: social, username, alias
+hint: Download/Ansicht öffentlicher Instagram-Inhalte.
+order: 60
+type: online
+price: free
+
+### Peekviewer
+https://peekviewer.com
+id: 02070
+entity: social, username, alias
+hint: Anonymer Instagram-Profil-/Story-Viewer.
+order: 70
+type: online
+price: free
+
+### Save-Free
+https://save-free.com/instagram-viewer
+id: 02080
+entity: social, username, alias
+hint: Browser-basierter Instagram-Viewer mit Speicher-Funktion.
+order: 80
+type: online
+price: free
+
+### Invizio
+https://inviziogram.com
+id: 02090
+entity: social, username, alias
+hint: Anonymer Story- und Profil-Viewer für Instagram.
+order: 90
+type: online
+price: free
+
+### Picuki
+https://picuki.com
+id: 02100
+entity: social, username, alias
+hint: Instagram-Profile, Hashtags und Standorte ohne Konto durchsuchen.
+order: 100
+type: online
+price: free
+
+
+
+## TikTok
+### TTViewer
+https://ttviewer.net
+id: 02110
+entity: social, username, alias
+hint: TikTok-Profile und Videos ohne Login einsehen.
+order: 10
+type: online
+price: free
+
+### ssstik.io Viewer
+https://ssstik.io/tiktok-viewer
+id: 02120
+entity: social, username, alias
+hint: TikTok-Inhalte browserbasiert ansehen und herunterladen.
+order: 20
+type: online
+price: free
+
+### Anonymous-Viewer
+https://anonymous-viewer.com
+id: 02130
+entity: social, username, alias
+hint: TikTok-Profile anonym abrufen.
+order: 30
+type: online
+price: free
+
+### TikFace
+https://tikface.com
+id: 02140
+entity: social, username, alias
+hint: TikTok-Profil-Recherche und Vorschau.
+order: 40
+type: online
+price: free
+
+### EasyComment TikTok Viewer
+https://easycomment.ai/tiktok-viewer
+id: 02150
+entity: social, username, alias
+hint: TikTok-Profile und Kommentare ohne Konto sichten.
+order: 50
+type: online
+price: freemium
+
+### Urlebird
+https://urlebird.com
+id: 02160
+entity: social, username, alias
+hint: TikTok-Mirror mit Profil-, Video- und Hashtag-Suche.
+order: 60
+type: online
+price: free
+
+### Musicaldown
+https://musicaldown.com
+id: 02170
+entity: social, username, alias
+hint: TikTok-Videos ohne Wasserzeichen herunterladen (Forensik-Erhaltung).
+order: 70
+type: online
+price: free
+
+
+
+## Snapchat
+### StoryLooker
+https://storylooker.com
+id: 02180
+entity: social, username, alias
+hint: Anonyme Anzeige öffentlicher Snapchat-Storys ohne Konto.
+order: 10
+type: online
+price: freemium
+
+### SpyBroski Snapchat Viewer
+https://spybroski.com/snapchat-story-viewer
+id: 02190
+entity: social, username, alias
+hint: Snapchat-Story-Vorschau über Drittanbieter.
+order: 20
+type: online
+price: freemium
+
+### ViewSnapStories
+https://viewsnapstories.com
+id: 02200
+entity: social, username, alias
+hint: Öffentliche Snapchat-Storys browserbasiert einsehen.
+order: 30
+type: online
+price: free
+
+### On4t Snapchat Story Viewer
+https://on4t.com/snapchat-story-viewer
+id: 02210
+entity: social, username, alias
+hint: Snapchat-Story-Viewer ohne App-Installation.
+order: 40
+type: online
+price: free
+
+### StoryBox
+https://storybox.io/snapchat-story-viewer
+id: 02220
+entity: social, username, alias
+hint: Story-Viewer für mehrere Plattformen inkl. Snapchat.
+order: 50
+type: online
+price: freemium
+
+### BitChipDigital Snapchat Tools
+https://bitchipdigital.com
+id: 02230
+entity: social, username, alias
+hint: Sammlung Snapchat-bezogener Hilfsmittel und Story-Viewer.
+order: 60
+type: online
+price: free
+
+### Themeton Social Viewer
+https://themeton.com/tools/social-viewer/snapchat
+id: 02240
+entity: social, username, alias
+hint: Plattformübergreifender Social-Viewer mit Snapchat-Modul.
+order: 70
+type: online
+price: free
+
+### StoryViewer.ai
+https://storyviewer.ai/snapchat-story-viewer
+id: 02250
+entity: social, username, alias
+hint: KI-gestützter Snapchat-Story-Viewer mit Vorschau-Funktion.
+order: 80
+type: online
+price: freemium
+
+
+
+## Facebook
+### lookup-id.com
+https://lookup-id.com
+id: 02260
+entity: social, username, alias
+hint: Ermittelt die numerische Facebook-User-ID zu einem Profilnamen.
+order: 10
+type: online
+price: free
+
+### WhoPostedWhat
+https://whopostedwhat.com
+id: 02270
+entity: social, username, alias
+hint: Zeitlich eingegrenzte Suche nach öffentlichen Facebook-Beiträgen.
+order: 20
+type: online
+price: freemium
+
+### One-Plus Toolkit
+https://one-plus.github.io/Facebook
+id: 02280
+entity: social, username, alias
+hint: Sammlung von Such- und Filterlinks zu Facebook-Inhalten.
+order: 30
+type: collection
+price: free
+
+
+
+## Web-Archive
+### Wayback Machine
+https://web.archive.org
+id: 02290
+entity: domain, social, username, *
+hint: Historische Snapshots von Websites — Original-Stand zum Zeitpunkt X belegen.
+order: 10
+type: online
+price: free
+
+
+
+## Bildersuche
+### TinEye
+https://tineye.com
+id: 02300
+entity: *
+hint: Reverse Image Search — findet Erstveröffentlichung und Wiederverwendungen eines Bildes.
+order: 10
+type: online
+price: freemium
+
+### Pimeyes
+https://pimeyes.com
+id: 02310
+entity: *
+hint: Reverse-Gesichtssuche — bildbasierter Treffer-Abgleich im offenen Web. Besonders sensibel (biometrische Daten); Zulässigkeit, Verhältnismäßigkeit und Datenschutz vor jeder Nutzung gesondert prüfen.
+order: 20
+type: warning
+price: freemium
 
 
 
