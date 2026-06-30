@@ -59,7 +59,6 @@
 #   {value}  optional im URL → wird beim Öffnen durch den Knotenwert ersetzt.
 
 
-
 ## Benutzername
 ### WhatsMyName
 https://whatsmyname.app/
@@ -87,7 +86,6 @@ hint: Parallele Verfügbarkeitsprüfung des Benutzernamens auf gängigen Plattfo
 order: 30
 type: online
 price: free
-
 
 
 ## E-Mail-Adresse
@@ -137,7 +135,6 @@ type: online
 price: free
 
 
-
 ## Rufnummer
 ### Wer-ruft-an / Rückwärtssuche
 https://www.dasoertliche.de/rueckwaertssuche/
@@ -146,7 +143,6 @@ entity: phone
 hint: Rückwärtssuche zu einer (deutschen) Rufnummer.
 type: online
 price: free
-
 
 
 ## Domain / Website
@@ -222,7 +218,14 @@ order: 80
 type: online
 price: free
 
-
+### BuiltWith
+https://builtwith.com/
+id: 00380
+entity: domain
+hint: Technologie-Profil einer Website (CMS, Frameworks, Analytics, Hosting, Tracker).
+order: 90
+type: online
+price: freemium
 
 ## Server / IP-Adresse
 ### Shodan
@@ -270,7 +273,32 @@ order: 50
 type: online
 price: free
 
+### Censys
+https://search.censys.io/
+id: 00450
+entity: server
+hint: Durchsuchbarer Internet-Scan (Hosts, offene Dienste, Zertifikate) — Alternative bzw. Ergänzung zu Shodan.
+order: 60
+type: online
+price: freemium
 
+### Nmap
+https://nmap.org/
+id: 00460
+entity: server
+hint: Netzwerk-Scanner zur Port-, Dienst- und Betriebssystem-Erkennung (lokal zu installieren; nur mit ausdrücklicher Berechtigung einsetzen).
+order: 70
+type: tool
+price: free
+
+### Triage
+https://tria.ge/
+id: 00470
+entity: domain, server
+hint: Automatisierte Malware- und URL-Sandbox (Hatching Triage) — Verhaltensanalyse verdächtiger Dateien und Links.
+order: 80
+type: online
+price: freemium
 
 ## Soziale Netzwerke
 ### Allround-Personensuche
@@ -291,7 +319,6 @@ type: online
 price: freemium
 
 
-
 ## Telegram
 ### Telegago (Google CSE)
 https://cse.google.com/cse?&cx=006368593537057042503:efxu7xprihg
@@ -300,7 +327,6 @@ entity: messenger, username, alias
 hint: Google-Custom-Search-Engine für öffentliche Telegram-Channels.
 type: online
 price: free
-
 
 
 ## Karten
@@ -349,7 +375,23 @@ order: 50
 type: collection
 price: free
 
+### Overpass Turbo
+https://overpass-turbo.eu/
+id: 00650
+entity: location
+hint: Interaktiver Overpass-API-Editor mit Kartenvorschau — Objekte und POI gezielt aus OpenStreetMap abfragen.
+order: 60
+type: tool
+price: free
 
+### Surveillance under Surveillance
+https://sunders.uber.space/
+id: 00660
+entity: location
+hint: Weltweite Karte von Überwachungsinfrastruktur (Kameras, ALPR, Wachpersonal) aus OpenStreetMap-Daten.
+order: 70
+type: online
+price: free
 
 ## Daten-Leaks
 ### IntelligenceX
@@ -434,7 +476,6 @@ type: online
 price: premium
 
 
-
 ## Doxing
 ### Doxbin
 https://doxbin.com/
@@ -444,7 +485,6 @@ hint: Doxing-Plattform — VORSICHT: Daten sind oft falsch, manipuliert oder ill
 order: 10
 type: warning
 price: free
-
 
 
 ## Sammlungen
@@ -484,7 +524,23 @@ order: 40
 type: collection
 price: free
 
+### Online Cyber Tools
+https://onlinecybertools.com/
+id: 01040
+entity: *
+hint: Kuratierte Sammlung von Online-OSINT- und Cyber-Werkzeugen, thematisch gegliedert.
+order: 50
+type: collection
+price: free
 
+### Bellingcat Online Toolkit
+https://bellingcat.gitbook.io/toolkit
+id: 01050
+entity: *
+hint: Umfangreiche, laufend gepflegte Werkzeug-Sammlung des Bellingcat-Rechercheteams (nach Kategorien geordnet).
+order: 60
+type: collection
+price: free
 
 ## GitHub-Tools
 ### Spiderfoot
@@ -622,7 +678,14 @@ order: 150
 type: tool
 price: free
 
-
+### Mitaka
+https://github.com/ninoseki/mitaka
+id: 01250
+entity: domain, server, email
+hint: Browser-Erweiterung: markierte IOCs (IP, Domain, URL, Hash, E-Mail) per Kontextmenü in zahlreichen Suchdiensten nachschlagen.
+order: 160
+type: tool
+price: free
 
 ## Instagram
 ### Imginn
@@ -716,7 +779,6 @@ type: online
 price: free
 
 
-
 ## TikTok
 ### TTViewer
 https://ttviewer.net
@@ -780,7 +842,6 @@ hint: TikTok-Videos ohne Wasserzeichen herunterladen (Forensik-Erhaltung).
 order: 70
 type: online
 price: free
-
 
 
 ## Snapchat
@@ -857,7 +918,6 @@ type: online
 price: freemium
 
 
-
 ## Facebook
 ### lookup-id.com
 https://lookup-id.com
@@ -887,7 +947,6 @@ type: collection
 price: free
 
 
-
 ## Web-Archive
 ### Wayback Machine
 https://web.archive.org
@@ -897,7 +956,6 @@ hint: Historische Snapshots von Websites — Original-Stand zum Zeitpunkt X bele
 order: 10
 type: online
 price: free
-
 
 
 ## Bildersuche
@@ -919,7 +977,23 @@ order: 20
 type: warning
 price: freemium
 
+### Lenso.ai
+https://lenso.ai/
+id: 02320
+entity: *
+hint: KI-gestützte Rückwärts-Bildersuche — findet ähnliche Bilder, Orte und Personen im offenen Web.
+order: 30
+type: online
+price: freemium
 
+### Pixalytica
+https://pixalytica.com/
+id: 02330
+entity: *
+hint: KI-Gesichtserkennung und KYC-Prüfung aus einem Foto. Biometrisch hochsensibel; Zulässigkeit, Verhältnismäßigkeit und Datenschutz vor jeder Nutzung gesondert prüfen.
+order: 40
+type: warning
+price: premium
 
 ## Allgemein
 ### Allgemeine Suchmaschine
@@ -927,8 +1001,71 @@ https://www.google.com/search?q={value}
 id: 00900
 entity: *
 hint: Generischer Einstieg für jeden Entitätstyp (Wert wird eingesetzt).
-order: 90
+order: 10
 type: online
 price: free
+
+### DorkGPT
+https://www.dorkgpt.com/
+id: 00910
+entity: *
+hint: Erzeugt aus einer natürlichsprachlichen Beschreibung passende Google-Dorks (erweiterte Suchoperatoren).
+order: 20
+type: online
+price: free
+
+### Kagi
+https://kagi.com/
+id: 00920
+entity: *
+hint: Werbefreie, datenschutzfreundliche Suchmaschine (kostenpflichtig) mit sauberen, unpersonalisierten Trefferlisten.
+order: 30
+type: online
+price: premium
+
+### Lampyre
+https://lampyre.io/
+id: 00930
+entity: *
+hint: OSINT-Datenanalyse-Werkzeug: verknüpft Personen, Unternehmen, Domains und IPs in Diagrammen (Desktop/Online).
+order: 40
+type: tool
+price: freemium
+
+### Nexus
+https://nexus-ai.tools/
+id: 00940
+entity: *
+hint: OSINT-Aggregator-Plattform: bündelt zahlreiche Werkzeuge mit KI-Analyse, Entitäts-Mapping und gerichtsfesten Berichten.
+order: 50
+type: online
+price: freemium
+
+### ODCrawler
+https://odcrawler.xyz/
+id: 00950
+entity: *
+hint: Suchmaschine für offene Verzeichnisse (Open Directories) — findet frei zugängliche Dateien im Web.
+order: 60
+type: online
+price: free
+
+### Overpass Turbo
+https://overpass-turbo.eu/
+id: 00960
+entity: location
+hint: Interaktiver Overpass-API-Editor mit Kartenvorschau (zusätzlich unter Karten gelistet).
+order: 70
+type: tool
+price: free
+
+### Videris
+https://blackdotsolutions.com/
+id: 00970
+entity: *
+hint: Kommerzielle OSINT-Ermittlungsplattform (Blackdot Solutions) zur Datenaggregation, Visualisierung und Berichterstellung.
+order: 80
+type: online
+price: premium
 
 [EOF]
