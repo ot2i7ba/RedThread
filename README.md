@@ -1,4 +1,4 @@
-[Deutsche Version](#redthread-ger) | [English version](#redthread-eng)
+[Deutsche Version](#redthread-ger) | [English version](#redthread-eng) | [Screenshots](#screenshots)
 
 &nbsp;
 &nbsp;
@@ -116,3 +116,31 @@ Perhaps that is RedThread's actual character: not a product built around a polis
 I am genuinely curious to see where RedThread will go from here — what started as a small helper tool has gradually grown into a much larger project; much is still open, but I continue to work on it step by step, as time permits alongside work and everyday life.
 
 The project homepage is [redthread.rocks](https://redthread.rocks).
+
+&nbsp;
+&nbsp;
+
+---
+
+&nbsp;
+&nbsp;
+
+# Screenshots
+
+<p align="center">
+  <img src="Screenshots/screenshot_01.webp" alt="RedThread – Kettenansicht" width="32%" />
+  <img src="Screenshots/screenshot_02.webp" alt="RedThread – Zeitstrahl" width="32%" />
+  <img src="Screenshots/screenshot_03.webp" alt="RedThread – Graphansicht" width="32%" />
+</p>
+
+<p align="center">
+  <img src="Screenshots/screenshot_04.webp" alt="RedThread – Geoansicht" width="32%" />
+  <img src="Screenshots/screenshot_05.webp" alt="RedThread – Overpass" width="32%" />
+  <img src="Screenshots/screenshot_06.webp" alt="RedThread – Matrix" width="32%" />
+</p>
+
+<p align="center">
+  <img src="Screenshots/screenshot_07.webp" alt="RedThread – Recherchehilfe" width="32%" />
+  <img src="Screenshots/screenshot_08.webp" alt="RedThread – Plausibilität" width="32%" />
+  <img src="Screenshots/screenshot_09.webp" alt="RedThread – Audit" width="32%" />
+</p>
