@@ -1,0 +1,1071 @@
+# =============================================================================
+# RedThread OSINT Tools
+# =============================================================================
+#
+# Diese Datei ist Bestandteil der RedThread-Anwendung und stellt eine
+# kuratierte Sammlung externer OSINT-Werkzeuge bereit (Recherche-Hilfe für
+# die abhakbaren Prüfketten je Knoten).
+#
+# Anwendung:    RedThread — Forensische OSINT-Erkenntnisketten
+# Copyright:    © 2026 ot2i7ba. Alle Rechte vorbehalten.
+# Homepage:     https://redthread.rocks
+# Quellcode:    https://github.com/ot2i7ba
+#
+# -----------------------------------------------------------------------------
+# Datenschutz
+# -----------------------------------------------------------------------------
+# Beim Aufruf eines hier gelisteten Dienstes werden Daten (insbesondere der
+# eingegebene Suchbegriff, die IP-Adresse des Aufrufenden, Browser-Kennungen
+# und ggf. weitere Verbindungsmerkmale) an den jeweiligen Drittanbieter
+# übertragen und dort verarbeitet. Für die Erhebung, Verarbeitung, Speicherung
+# und Weitergabe dieser Daten gelten ausschließlich die Datenschutzhinweise,
+# Allgemeinen Geschäftsbedingungen und sonstigen Nutzungsbedingungen des
+# jeweiligen Anbieters. Diese sind vor jeder Nutzung eigenverantwortlich zur
+# Kenntnis zu nehmen. Insbesondere ist im Einzelfall zu prüfen, ob die
+# Übermittlung im konkreten Ermittlungs- bzw. Recherchekontext zulässig,
+# verhältnismäßig und mit den anwendbaren Vorgaben der Datenschutz-Grundver-
+# ordnung (DSGVO), nationaler Datenschutzgesetze sowie dienst- bzw. behörden-
+# interner Vorgaben (z. B. OPSEC) vereinbar ist.
+#
+# -----------------------------------------------------------------------------
+# Haftungsausschluss
+# -----------------------------------------------------------------------------
+# Die Aufnahme eines Dienstes in diese Liste stellt weder eine Empfehlung
+# noch eine Aussage über dessen inhaltliche Qualität, Verfügbarkeit, recht-
+# liche Zulässigkeit, Aktualität oder Eignung für einen bestimmten Zweck dar.
+# Der Entwickler der RedThread-Anwendung ist nicht Anbieter der hier verlink-
+# ten Drittdienste, hat keinen Einfluss auf deren Gestaltung, Funktion, In-
+# halte oder Datenverarbeitung und übernimmt keinerlei Haftung — gleich aus
+# welchem Rechtsgrund — für Schäden, Datenschutzverstöße, Verfügbarkeits-
+# ausfälle, fehlerhafte oder veraltete Ergebnisse oder sonstige nachteilige
+# Folgen, die aus der Nutzung der gelisteten Dienste oder dem Vertrauen auf
+# deren Ausgaben entstehen. Die Verantwortung für die rechtmäßige, ermitt-
+# lungstaktisch und ethisch angemessene Verwendung der hier gelisteten
+# Dienste liegt vollständig beim Nutzer.
+#
+# -----------------------------------------------------------------------------
+# Prüfketten-Schema
+# -----------------------------------------------------------------------------
+#   id:      Stabiler, von Bezeichnung/URL/Position UNABHÄNGIGER Identifikator.
+#   entity:  Entitätstyp-IDs (username, email, phone, domain, server,
+#            messenger, social, alias, location …); * = alle.
+#            Komma/Semikolon-getrennt.
+#   hint:    Kurzanleitung (erscheint in der abhakbaren Checkliste).
+#   order:   kleinere Zahl = weiter oben in der Checkliste.
+#   type:    Online | Tool | Collection | Warning  (farbige Pille:
+#            grün / orange / indigo / roter Rand).
+#   price:   Free | Freemium | Premium  (farbige Pille: grün / orange / rot;
+#            zusätzlich „$"/„$$"-Marker am Label). Ungültig → verworfen.
+#   {value}  optional im URL → wird beim Öffnen durch den Knotenwert ersetzt.
+
+
+## Benutzername
+### WhatsMyName
+https://whatsmyname.app/
+id: 00010
+entity: username, alias
+hint: Prüft, auf welchen Plattformen dieser Benutzername existiert.
+order: 10
+type: online
+price: free
+
+### Namechk
+https://namechk.com/
+id: 00020
+entity: username, alias
+hint: Schnelle Verfügbarkeits-/Existenzprüfung über viele Dienste.
+order: 20
+type: online
+price: free
+
+### InstantUsername
+https://instantusername.com
+id: 00030
+entity: username, alias
+hint: Parallele Verfügbarkeitsprüfung des Benutzernamens auf gängigen Plattformen.
+order: 30
+type: online
+price: free
+
+
+## E-Mail-Adresse
+### Have I Been Pwned
+https://haveibeenpwned.com/
+id: 00100
+entity: email
+hint: Taucht die Adresse in bekannten Daten-Leaks auf?
+order: 10
+type: online
+price: freemium
+
+### EmailRep
+https://emailrep.io/
+id: 00110
+entity: email
+hint: Reputations-/Kontextinfos zu einer E-Mail-Adresse.
+order: 20
+type: online
+price: freemium
+
+### Epieos
+https://epieos.com/
+id: 00120
+entity: email, phone
+hint: E-Mail-/Telefon-OSINT (Google/Skype/Spotify-Verknüpfungen).
+order: 30
+type: online
+price: freemium
+
+### OathNet
+https://oathnet.org/
+id: 00130
+entity: email, username
+hint: Recon-Plattform (E-Mail/Username-Abfragen).
+order: 40
+type: online
+price: freemium
+
+### OSINT Rocks
+https://osint.rocks/
+id: 00140
+entity: email, username
+hint: All-in-One-OSINT-Dashboard für E-Mail/Username.
+order: 50
+type: online
+price: free
+
+
+## Rufnummer
+### Wer-ruft-an / Rückwärtssuche
+https://www.dasoertliche.de/rueckwaertssuche/
+id: 00200
+entity: phone
+hint: Rückwärtssuche zu einer (deutschen) Rufnummer.
+type: online
+price: free
+
+
+## Domain / Website
+### WHOIS (who.is)
+https://who.is/whois/{value}
+id: 00300
+entity: domain
+hint: Registrierungs-/Inhaberdaten der Domain (Wert wird eingesetzt).
+order: 10
+type: online
+price: free
+
+### crt.sh (Zertifikate)
+https://crt.sh/?q={value}
+id: 00310
+entity: domain
+hint: Ausgestellte TLS-Zertifikate → Subdomains/Historie.
+order: 20
+type: online
+price: free
+
+### CentralOps
+https://centralops.net/co/
+id: 00320
+entity: domain, server
+hint: Domain-/IP-Toolbox (whois, DNS, traceroute, …).
+order: 30
+type: online
+price: free
+
+### URL Scan
+https://urlscan.io/
+id: 00330
+entity: domain
+hint: URL-Sandbox mit Screenshot, Requests und Indikatoren.
+order: 40
+type: online
+price: freemium
+
+### DNS Dumpster
+https://dnsdumpster.com/
+id: 00340
+entity: domain
+hint: Passive DNS / Subdomain-Map einer Domain.
+order: 50
+type: online
+price: free
+
+### MXToolbox
+https://mxtoolbox.com/
+id: 00350
+entity: domain
+hint: Mail-/DNS-Diagnose (MX, SPF, DMARC, Blacklists).
+order: 60
+type: online
+price: freemium
+
+### Robotex
+https://robtex.com/
+id: 00360
+entity: domain, server
+hint: Beziehungen zwischen Domains, IPs und ASNs.
+order: 70
+type: online
+price: free
+
+### You Get Signal
+https://www.yougetsignal.com/
+id: 00370
+entity: domain, server
+hint: Reverse-DNS — alle Domains hinter einer IP.
+order: 80
+type: online
+price: free
+
+### BuiltWith
+https://builtwith.com/
+id: 00380
+entity: domain
+hint: Technologie-Profil einer Website (CMS, Frameworks, Analytics, Hosting, Tracker).
+order: 90
+type: online
+price: freemium
+
+## Server / IP-Adresse
+### Shodan
+https://www.shodan.io/
+id: 00400
+entity: server
+hint: Offene Dienste/Ports/Banner zu einer IP (manuell eingeben).
+order: 10
+type: online
+price: freemium
+
+### Criminal IP
+https://search.criminalip.io/
+id: 00410
+entity: server
+hint: Threat-Intelligence + IP-Reputation.
+order: 20
+type: online
+price: freemium
+
+### IP Location
+https://www.iplocation.net/
+id: 00420
+entity: server
+hint: IP→Geo-Lookup über mehrere Anbieter.
+order: 30
+type: online
+price: free
+
+### IPInfo.io
+https://ipinfo.io/
+id: 00430
+entity: server
+hint: IP→ASN/Geo/Provider, gute API-Qualität.
+order: 40
+type: online
+price: freemium
+
+### Super IP
+https://suip.biz/
+id: 00440
+entity: server
+hint: IP-Lookup-Sammelseite (mehrere Quellen).
+order: 50
+type: online
+price: free
+
+### Censys
+https://search.censys.io/
+id: 00450
+entity: server
+hint: Durchsuchbarer Internet-Scan (Hosts, offene Dienste, Zertifikate) — Alternative bzw. Ergänzung zu Shodan.
+order: 60
+type: online
+price: freemium
+
+### Nmap
+https://nmap.org/
+id: 00460
+entity: server
+hint: Netzwerk-Scanner zur Port-, Dienst- und Betriebssystem-Erkennung (lokal zu installieren; nur mit ausdrücklicher Berechtigung einsetzen).
+order: 70
+type: tool
+price: free
+
+### Triage
+https://tria.ge/
+id: 00470
+entity: domain, server
+hint: Automatisierte Malware- und URL-Sandbox (Hatching Triage) — Verhaltensanalyse verdächtiger Dateien und Links.
+order: 80
+type: online
+price: freemium
+
+## Soziale Netzwerke
+### Allround-Personensuche
+https://example.org/suche?q={value}
+id: 00500
+entity: social, username, alias
+hint: Beispiel-Eintrag mit Wert-Vorbelegung — durch echtes Tool ersetzen.
+type: online
+price: free
+
+### Social Searcher
+https://social-searcher.com
+id: 00510
+entity: social, username, alias
+hint: Plattformübergreifende Suche nach Posts und Profilen anhand von Stichwort/Username.
+order: 20
+type: online
+price: freemium
+
+
+## Telegram
+### Telegago (Google CSE)
+https://cse.google.com/cse?&cx=006368593537057042503:efxu7xprihg
+id: 00800
+entity: messenger, username, alias
+hint: Google-Custom-Search-Engine für öffentliche Telegram-Channels.
+type: online
+price: free
+
+
+## Karten
+### OpenStreetMap
+https://www.openstreetmap.org/search?query={value}
+id: 00600
+entity: location
+hint: Offene Karte; Adresse oder Koordinaten werden eingesetzt.
+order: 10
+type: online
+price: free
+
+### Google Maps
+https://www.google.com/maps/search/{value}
+id: 00610
+entity: location
+hint: Karte/Satellit/Street View; Suchstring wird eingesetzt.
+order: 20
+type: online
+price: free
+
+### Bing Maps
+https://www.bing.com/maps?q={value}
+id: 00620
+entity: location
+hint: Alternative Karte (oft andere Schrägluftaufnahmen).
+order: 30
+type: online
+price: free
+
+### Wikimapia
+https://wikimapia.org/
+id: 00630
+entity: location
+hint: Crowd-getaggte Orte (Hintergrund/Beschriftungen, manuell eingeben).
+order: 40
+type: online
+price: free
+
+### GeoHack (Koordinaten-Hub)
+https://geohack.toolforge.org/
+id: 00640
+entity: location
+hint: Sammelseite mit vielen Karten-/Geo-Diensten pro Koordinate.
+order: 50
+type: collection
+price: free
+
+### Overpass Turbo
+https://overpass-turbo.eu/
+id: 00650
+entity: location
+hint: Interaktiver Overpass-API-Editor mit Kartenvorschau — Objekte und POI gezielt aus OpenStreetMap abfragen.
+order: 60
+type: tool
+price: free
+
+### Surveillance under Surveillance
+https://sunders.uber.space/
+id: 00660
+entity: location
+hint: Weltweite Karte von Überwachungsinfrastruktur (Kameras, ALPR, Wachpersonal) aus OpenStreetMap-Daten.
+order: 70
+type: online
+price: free
+
+## Daten-Leaks
+### IntelligenceX
+https://intelx.io/
+id: 00700
+entity: email, username, domain
+hint: Suchmaschine über Leaks, Pastes, Darknet (manuell eingeben).
+order: 10
+type: online
+price: freemium
+
+### DeHashed
+https://www.dehashed.com/
+id: 00710
+entity: email, username
+hint: Leak-Datenbank (Suche kostenpflichtig).
+order: 20
+type: online
+price: premium
+
+### LeakCheck
+https://leakcheck.io/
+id: 00720
+entity: email, username
+hint: Schnelle Leak-Trefferprüfung.
+order: 30
+type: online
+price: freemium
+
+### Identity Leak Checker (Uni Bonn)
+https://leakchecker.uni-bonn.de/
+id: 00730
+entity: email
+hint: Kostenlose deutsche Leak-Prüfung (Universität Bonn).
+order: 40
+type: online
+price: free
+
+### Breach Directory
+https://breachdirectory.org/
+id: 00740
+entity: email, username
+hint: Indizierte Übersicht öffentlich gewordener Breaches.
+order: 50
+type: online
+price: free
+
+### IntelRecord
+https://intelrecord.com/
+id: 00750
+entity: email, username
+hint: Leak-Datenbank-Suche.
+order: 60
+type: online
+price: freemium
+
+### OSINT Leak
+https://osintleak.com/
+id: 00760
+entity: email, username
+hint: Leak-Lookup-Dienst.
+order: 70
+type: online
+price: freemium
+
+### LeakRadar
+https://leakradar.io/de
+id: 00770
+entity: email
+hint: Leak-Monitoring (DE-Oberfläche).
+order: 80
+type: online
+price: freemium
+
+### Snusbase
+https://www.snusbase.com/
+id: 00780
+entity: email, username
+hint: Kommerzielle Leak-Datenbank.
+order: 90
+type: online
+price: premium
+
+
+## Doxing
+### Doxbin
+https://doxbin.com/
+id: 00850
+entity: username, email, alias, person
+hint: Doxing-Plattform — VORSICHT: Daten sind oft falsch, manipuliert oder illegal beschafft. Nur zur Belegung/Quellenkritik nutzen, niemals als Faktum übernehmen.
+order: 10
+type: warning
+price: free
+
+
+## Sammlungen
+### OSINT Framework
+https://osintframework.com/
+id: 01000
+entity: *
+hint: Kuratiertes, gut sortiertes OSINT-Tool-Verzeichnis.
+order: 10
+type: collection
+price: free
+
+### The Ultimate OSINT Collection
+https://start.me/p/DPYPMz/the-ultimate-osint-collection
+id: 01010
+entity: *
+hint: Umfangreiches start.me-Board (alle OSINT-Bereiche).
+order: 20
+type: collection
+price: free
+
+### Domain OSINT
+https://start.me/p/aL7OgX/site-domain-osint
+id: 01020
+entity: domain
+hint: start.me-Board speziell für Domain-Recherche.
+order: 30
+type: collection
+price: free
+
+### OSINT.sh
+https://osint.sh/
+id: 01030
+entity: *
+hint: Aggregator-Webdienst mit vielen Mini-Tools.
+order: 40
+type: collection
+price: free
+
+### Online Cyber Tools
+https://onlinecybertools.com/
+id: 01040
+entity: *
+hint: Kuratierte Sammlung von Online-OSINT- und Cyber-Werkzeugen, thematisch gegliedert.
+order: 50
+type: collection
+price: free
+
+### Bellingcat Online Toolkit
+https://bellingcat.gitbook.io/toolkit
+id: 01050
+entity: *
+hint: Umfangreiche, laufend gepflegte Werkzeug-Sammlung des Bellingcat-Rechercheteams (nach Kategorien geordnet).
+order: 60
+type: collection
+price: free
+
+## GitHub-Tools
+### Spiderfoot
+https://github.com/smicallef/spiderfoot
+id: 01100
+entity: *
+hint: Open-Source-Recon-Framework mit vielen Modulen.
+order: 10
+type: tool
+price: free
+
+### Socid Extractor
+https://github.com/soxoj/socid-extractor
+id: 01110
+entity: social, username
+hint: Extrahiert Profilfelder aus sozialen Netzwerken.
+order: 20
+type: tool
+price: free
+
+### Recon-NG
+https://github.com/lanmaster53/recon-ng
+id: 01120
+entity: *
+hint: Modulares Recon-Framework (CLI).
+order: 30
+type: tool
+price: free
+
+### Mailcat
+https://github.com/sharsil/mailcat
+id: 01130
+entity: email
+hint: E-Mail-Existenzprüfung über mehrere Anbieter.
+order: 40
+type: tool
+price: free
+
+### GHunt
+https://github.com/mxrch/ghunt
+id: 01140
+entity: email
+hint: Aufklärung zu Google-Konten anhand einer Adresse.
+order: 50
+type: tool
+price: free
+
+### Holehe
+https://github.com/megadose/holehe
+id: 01150
+entity: email
+hint: Findet Dienste, bei denen die E-Mail registriert ist.
+order: 60
+type: tool
+price: free
+
+### theHarvester
+https://github.com/laramies/theHarvester
+id: 01160
+entity: email, domain
+hint: Sammelt E-Mails, Subdomains und Hosts aus offenen Quellen.
+order: 70
+type: tool
+price: free
+
+### Sherlock
+https://github.com/sherlock-project/sherlock
+id: 01170
+entity: username, alias
+hint: Sucht einen Username auf vielen Plattformen.
+order: 80
+type: tool
+price: free
+
+### Maigret
+https://github.com/soxoj/maigret
+id: 01180
+entity: username, alias
+hint: Aggregierter Username-Recon mit Profil-Extraktion.
+order: 90
+type: tool
+price: free
+
+### Enola Holmes
+https://github.com/TheYahya/enola
+id: 01190
+entity: username, alias
+hint: Username-Recon-Tool (Sherlock-Alternative).
+order: 100
+type: tool
+price: free
+
+### Aliens Eye
+https://github.com/arxhr007/Aliens_eye
+id: 01200
+entity: username, email
+hint: OSINT-Aggregator (Username/E-Mail).
+order: 110
+type: tool
+price: free
+
+### Naminter
+https://github.com/3xp0rt/Naminter
+id: 01210
+entity: username, alias
+hint: Username-Verfügbarkeits-Check.
+order: 120
+type: tool
+price: free
+
+### DetectDee
+https://github.com/Yvesssn/DetectDee
+id: 01220
+entity: username
+hint: Username/Profil-Detector.
+order: 130
+type: tool
+price: free
+
+### Social-Analyzer
+https://github.com/qeeqbox/social-analyzer
+id: 01230
+entity: social, username
+hint: Analyse sozialer Profile mit Heuristiken.
+order: 140
+type: tool
+price: free
+
+### Argus
+https://github.com/jasonxtn/Argus
+id: 01240
+entity: *
+hint: All-in-One-Recon-Tool.
+order: 150
+type: tool
+price: free
+
+### Mitaka
+https://github.com/ninoseki/mitaka
+id: 01250
+entity: domain, server, email
+hint: Browser-Erweiterung: markierte IOCs (IP, Domain, URL, Hash, E-Mail) per Kontextmenü in zahlreichen Suchdiensten nachschlagen.
+order: 160
+type: tool
+price: free
+
+## Instagram
+### Imginn
+https://imginn.com
+id: 02010
+entity: social, username, alias
+hint: Anonyme Anzeige öffentlicher Instagram-Profile, Beiträge und Storys ohne Login.
+order: 10
+type: online
+price: free
+
+### GreatFon
+https://greatfon.com
+id: 02020
+entity: social, username, alias
+hint: Profile, Beiträge und Story-Highlights von Instagram extern abrufbar.
+order: 20
+type: online
+price: free
+
+### AnonyIG
+https://anonyig.com
+id: 02030
+entity: social, username, alias
+hint: Anonymer Instagram-Story- und Profil-Viewer.
+order: 30
+type: online
+price: free
+
+### Dolphin Radar
+https://dolphinradar.com
+id: 02040
+entity: social, username, alias
+hint: Aktivitätsanalyse zu Instagram-Profilen (Follows, Likes, Posting-Muster).
+order: 40
+type: online
+price: freemium
+
+### Inflact Profile Viewer
+https://inflact.com/instagram-viewer
+id: 02050
+entity: social, username, alias
+hint: Profil-, Story- und Highlight-Vorschau ohne Instagram-Login.
+order: 50
+type: online
+price: freemium
+
+### GramSnap
+https://gramsnap.com
+id: 02060
+entity: social, username, alias
+hint: Download/Ansicht öffentlicher Instagram-Inhalte.
+order: 60
+type: online
+price: free
+
+### Peekviewer
+https://peekviewer.com/profile/
+id: 02070
+entity: social, username, alias
+hint: Anonymer Instagram-Profil-/Story-Viewer.
+order: 70
+type: online
+price: free
+
+### Save-Free
+https://save-free.com/instagram-viewer
+id: 02080
+entity: social, username, alias
+hint: Browser-basierter Instagram-Viewer mit Speicher-Funktion.
+order: 80
+type: online
+price: free
+
+### Invizio
+https://inviziogram.com
+id: 02090
+entity: social, username, alias
+hint: Anonymer Story- und Profil-Viewer für Instagram.
+order: 90
+type: online
+price: free
+
+### Picuki
+https://picuki.com
+id: 02100
+entity: social, username, alias
+hint: Instagram-Profile, Hashtags und Standorte ohne Konto durchsuchen.
+order: 100
+type: online
+price: free
+
+
+## TikTok
+### TTViewer
+https://ttviewer.net
+id: 02110
+entity: social, username, alias
+hint: TikTok-Profile und Videos ohne Login einsehen.
+order: 10
+type: online
+price: free
+
+### ssstik.io Viewer
+https://ssstik.io/tiktok-viewer
+id: 02120
+entity: social, username, alias
+hint: TikTok-Inhalte browserbasiert ansehen und herunterladen.
+order: 20
+type: online
+price: free
+
+### Anonymous-Viewer
+https://anonymous-viewer.com
+id: 02130
+entity: social, username, alias
+hint: TikTok-Profile anonym abrufen.
+order: 30
+type: online
+price: free
+
+### TikFace
+https://tikface.com
+id: 02140
+entity: social, username, alias
+hint: TikTok-Profil-Recherche und Vorschau.
+order: 40
+type: online
+price: free
+
+### EasyComment TikTok Viewer
+https://easycomment.ai/tiktok-viewer
+id: 02150
+entity: social, username, alias
+hint: TikTok-Profile und Kommentare ohne Konto sichten.
+order: 50
+type: online
+price: freemium
+
+### Urlebird
+https://urlebird.com
+id: 02160
+entity: social, username, alias
+hint: TikTok-Mirror mit Profil-, Video- und Hashtag-Suche.
+order: 60
+type: online
+price: free
+
+### Musicaldown
+https://musicaldown.com
+id: 02170
+entity: social, username, alias
+hint: TikTok-Videos ohne Wasserzeichen herunterladen (Forensik-Erhaltung).
+order: 70
+type: online
+price: free
+
+
+## Snapchat
+### StoryLooker
+https://storylooker.com
+id: 02180
+entity: social, username, alias
+hint: Anonyme Anzeige öffentlicher Snapchat-Storys ohne Konto.
+order: 10
+type: online
+price: freemium
+
+### SpyBroski Snapchat Viewer
+https://spybroski.com/snapchat-story-viewer
+id: 02190
+entity: social, username, alias
+hint: Snapchat-Story-Vorschau über Drittanbieter.
+order: 20
+type: online
+price: freemium
+
+### ViewSnapStories
+https://viewsnapstories.com
+id: 02200
+entity: social, username, alias
+hint: Öffentliche Snapchat-Storys browserbasiert einsehen.
+order: 30
+type: online
+price: free
+
+### On4t Snapchat Story Viewer
+https://on4t.com/snapchat-story-viewer
+id: 02210
+entity: social, username, alias
+hint: Snapchat-Story-Viewer ohne App-Installation.
+order: 40
+type: online
+price: free
+
+### StoryBox
+https://storybox.io/snapchat-story-viewer
+id: 02220
+entity: social, username, alias
+hint: Story-Viewer für mehrere Plattformen inkl. Snapchat.
+order: 50
+type: online
+price: freemium
+
+### BitChipDigital Snapchat Tools
+https://bitchipdigital.com
+id: 02230
+entity: social, username, alias
+hint: Sammlung Snapchat-bezogener Hilfsmittel und Story-Viewer.
+order: 60
+type: online
+price: free
+
+### Themeton Social Viewer
+https://themeton.com/tools/social-viewer/snapchat
+id: 02240
+entity: social, username, alias
+hint: Plattformübergreifender Social-Viewer mit Snapchat-Modul.
+order: 70
+type: online
+price: free
+
+### StoryViewer.ai
+https://storyviewer.ai/snapchat-story-viewer
+id: 02250
+entity: social, username, alias
+hint: KI-gestützter Snapchat-Story-Viewer mit Vorschau-Funktion.
+order: 80
+type: online
+price: freemium
+
+
+## Facebook
+### lookup-id.com
+https://lookup-id.com
+id: 02260
+entity: social, username, alias
+hint: Ermittelt die numerische Facebook-User-ID zu einem Profilnamen.
+order: 10
+type: online
+price: free
+
+### WhoPostedWhat
+https://whopostedwhat.com
+id: 02270
+entity: social, username, alias
+hint: Zeitlich eingegrenzte Suche nach öffentlichen Facebook-Beiträgen.
+order: 20
+type: online
+price: freemium
+
+### One-Plus Toolkit
+https://one-plus.github.io/Facebook
+id: 02280
+entity: social, username, alias
+hint: Sammlung von Such- und Filterlinks zu Facebook-Inhalten.
+order: 30
+type: collection
+price: free
+
+
+## Web-Archive
+### Wayback Machine
+https://web.archive.org
+id: 02290
+entity: domain, social, username, *
+hint: Historische Snapshots von Websites — Original-Stand zum Zeitpunkt X belegen.
+order: 10
+type: online
+price: free
+
+
+## Bildersuche
+### TinEye
+https://tineye.com
+id: 02300
+entity: *
+hint: Reverse Image Search — findet Erstveröffentlichung und Wiederverwendungen eines Bildes.
+order: 10
+type: online
+price: freemium
+
+### Pimeyes
+https://pimeyes.com
+id: 02310
+entity: *
+hint: Reverse-Gesichtssuche — bildbasierter Treffer-Abgleich im offenen Web. Besonders sensibel (biometrische Daten); Zulässigkeit, Verhältnismäßigkeit und Datenschutz vor jeder Nutzung gesondert prüfen.
+order: 20
+type: warning
+price: freemium
+
+### Lenso.ai
+https://lenso.ai/
+id: 02320
+entity: *
+hint: KI-gestützte Rückwärts-Bildersuche — findet ähnliche Bilder, Orte und Personen im offenen Web.
+order: 30
+type: online
+price: freemium
+
+### Pixalytica
+https://pixalytica.com/
+id: 02330
+entity: *
+hint: KI-Gesichtserkennung und KYC-Prüfung aus einem Foto. Biometrisch hochsensibel; Zulässigkeit, Verhältnismäßigkeit und Datenschutz vor jeder Nutzung gesondert prüfen.
+order: 40
+type: warning
+price: premium
+
+## Allgemein
+### Allgemeine Suchmaschine
+https://www.google.com/search?q={value}
+id: 00900
+entity: *
+hint: Generischer Einstieg für jeden Entitätstyp (Wert wird eingesetzt).
+order: 10
+type: online
+price: free
+
+### DorkGPT
+https://www.dorkgpt.com/
+id: 00910
+entity: *
+hint: Erzeugt aus einer natürlichsprachlichen Beschreibung passende Google-Dorks (erweiterte Suchoperatoren).
+order: 20
+type: online
+price: free
+
+### Kagi
+https://kagi.com/
+id: 00920
+entity: *
+hint: Werbefreie, datenschutzfreundliche Suchmaschine (kostenpflichtig) mit sauberen, unpersonalisierten Trefferlisten.
+order: 30
+type: online
+price: premium
+
+### Lampyre
+https://lampyre.io/
+id: 00930
+entity: *
+hint: OSINT-Datenanalyse-Werkzeug: verknüpft Personen, Unternehmen, Domains und IPs in Diagrammen (Desktop/Online).
+order: 40
+type: tool
+price: freemium
+
+### Nexus
+https://nexus-ai.tools/
+id: 00940
+entity: *
+hint: OSINT-Aggregator-Plattform: bündelt zahlreiche Werkzeuge mit KI-Analyse, Entitäts-Mapping und gerichtsfesten Berichten.
+order: 50
+type: online
+price: freemium
+
+### ODCrawler
+https://odcrawler.xyz/
+id: 00950
+entity: *
+hint: Suchmaschine für offene Verzeichnisse (Open Directories) — findet frei zugängliche Dateien im Web.
+order: 60
+type: online
+price: free
+
+### Overpass Turbo
+https://overpass-turbo.eu/
+id: 00960
+entity: location
+hint: Interaktiver Overpass-API-Editor mit Kartenvorschau (zusätzlich unter Karten gelistet).
+order: 70
+type: tool
+price: free
+
+### Videris
+https://blackdotsolutions.com/
+id: 00970
+entity: *
+hint: Kommerzielle OSINT-Ermittlungsplattform (Blackdot Solutions) zur Datenaggregation, Visualisierung und Berichterstellung.
+order: 80
+type: online
+price: premium
+
+[EOF]
